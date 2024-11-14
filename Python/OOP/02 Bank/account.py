@@ -26,6 +26,7 @@ class account:
         if amount < 0:
             print("Betrag darf nicht negativ sein.")
         else:
+            print(f"Es wurden {amount} € auf Konto {self.__iban} eingezahlt.")
             self.__balance = self.__balance + amount
     
     def withdraw(self, amount:float) -> None:
