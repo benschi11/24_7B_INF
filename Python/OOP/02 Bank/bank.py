@@ -1,4 +1,5 @@
 from account import account
+from fileRepository import fileRepository
 
 class bank:
 
@@ -9,15 +10,9 @@ class bank:
     def loadAccounts(self) -> None:
         """ Loads all Accounts from this bank
         """
-        # Lösche die aktuelle Liste
-        self.__accounts.clear()
+        repository = fileRepository()
 
-        # Account erstellen
-        a1 = account("Benedikt Neuhold", 10000, "AT23123234549878",True)
-        a2 = account("Rainer Zufall", 4000, "AT78881992918777")
-
-        self.__accounts.append(a1)
-        self.__accounts.append(a2)
+        self.__accounts = repository.loadAccountsForBank(self.__name)
 
     def getAccountByIban(self, iban:str) -> account | None:
         """
