@@ -7,6 +7,9 @@ class bank:
         self.__name = name
         self.__accounts:list[account] = []
 
+    def getAccounts(self):
+        return self.__accounts
+
     def loadAccounts(self) -> None:
         """ Loads all Accounts from this bank
         """
@@ -41,5 +44,16 @@ class bank:
 
             # Betrag zu anderem Account hinzufügen
             account_to.deposit(amount)
+    
+    def __str__(self):
+        output = f"Name: {self.__name}\n"
+        output += "-"*20 + "\n"
+        output += "Accounts:\n"
+        output += "-"*10 + "\n"
 
+        for a in self.__accounts:
+            output += str(a)+"\n"
+            output += "-- \n"
+
+        return output
 

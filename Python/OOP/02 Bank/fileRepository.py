@@ -5,7 +5,6 @@ class fileRepository:
     """
     Saves and loads objects from and to a file
     """
-
     def loadAccountsForBank(self, bankname:str) -> list[account]:
         filename = bankname.lower().replace(" ", "_") + "_accounts.csv"
         path = f"data/{filename}" # works only on Windows
@@ -14,6 +13,8 @@ class fileRepository:
         datafile = open(path,"r", encoding="utf-8")
 
         firstLine = True
+
+        accounts:list[account] = []
 
         for line in datafile:
             if firstLine == True:
@@ -26,9 +27,12 @@ class fileRepository:
             # Erstelle Objekt von Account
             a = account(data[0],float(data[1]),data[2],bool(data[3]))
 
-            print(line)
+            # zur Liste hinzufügen
+            accounts.append(a)
 
         datafile.close()
+
+        return accounts
 
 
     def saveAccountsForBank(self, bankname:str):

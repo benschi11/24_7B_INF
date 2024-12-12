@@ -1,15 +1,32 @@
 from account import account
 from bank import bank
 
-raika = bank("Raiffeisenbank Weiz-Anger")
-raika.loadAccounts()
+def displayAccounts(Bank:bank) -> None:
+    for a in Bank.getAccounts():
+        print(f"{a.getIban()} ({a.getOwner()})")
 
-# Account mit IBAN AT23123234549878 auslesen
-# a1 = raika.getAccountByIban("AT23123234549878")
+print("-"*20)
+print("Banksystem 1.0")
+print("-"*20)
 
-# AT78881992918777
+while True:
+    print("Welche Bank möchten Sie laden?")
+    bankname = input(">")
 
-# raika.transfer("AT78881992918777", "AT23123234549878", 400)
+    try:
+        Bank = bank(bankname)
+        Bank.loadAccounts()
+        break
+    except:
+        print("Die Bank wurde leider nicht gefunden.")
 
-# Account printen
-# print(a1)
+print("Was möchten Sie tun:")
+print("(1) Accounts anzeigen")
+print("(2) Account hinzufügen")
+print("(3) Account löschen")
+print("(4) Überweisung tätigen")
+user_input = input(">")
+
+match user_input.strip():
+    case "1":
+        displayAccounts(Bank)
