@@ -9,6 +9,9 @@ class bank:
 
     def getAccounts(self):
         return self.__accounts
+    
+    def getName(self):
+        return self.__name
 
     def loadAccounts(self) -> None:
         """ Loads all Accounts from this bank
@@ -44,6 +47,23 @@ class bank:
 
             # Betrag zu anderem Account hinzufügen
             account_to.deposit(amount)
+
+    def addAccount(self, Account:account):
+        # Account zur Bankliste hinzufügen
+        self.__accounts.append(Account)
+
+        # speichere auf Festplatte
+        fileRepo = fileRepository()
+        fileRepo.saveAccountsForBank(self)
+
+    def delelteAccount(self, iban:str):
+        # erhalte Account Objekt
+        a = self.getAccountByIban(iban)
+        # lösche Account aus Liste
+
+        # speichere auf die Festplatte
+        pass
+
     
     def __str__(self):
         output = f"Name: {self.__name}\n"

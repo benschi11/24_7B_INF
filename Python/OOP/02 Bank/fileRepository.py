@@ -1,4 +1,10 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
 from account import account
+
+if TYPE_CHECKING:
+    from bank import bank
 
 
 class fileRepository:
@@ -35,5 +41,19 @@ class fileRepository:
         return accounts
 
 
-    def saveAccountsForBank(self, bankname:str):
-        pass
+    def saveAccountsForBank(self, Bank:bank):
+        filename = Bank.getName().lower().replace(" ", "_") + "_accounts.csv"
+        path = f"data/{filename}" # works only on Windows
+
+        # öffne Datei
+        datafile = open(path,"w", encoding="utf-8")
+
+        datafile.write("owner;balance;iban;overdraw\n") # erste Zeile
+
+        for a in Bank.getAccounts():
+            line = f"{a.getOwner()};{a.getBalance()};{a.getIban()};{a.getOverdraw()}\n"
+            datafile.write(line)
+
+
+        # schließt Datei
+        datafile.close()

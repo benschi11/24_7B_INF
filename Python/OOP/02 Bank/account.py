@@ -17,6 +17,9 @@ class account:
     def getIban(self) -> str:
         return self.__iban
     
+    def getOverdraw(self) -> bool:
+        return self.__overdraw
+    
     # setter
     def setOwner(self, value:str) -> None:
         self.__owner = value
