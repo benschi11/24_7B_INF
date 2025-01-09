@@ -56,13 +56,18 @@ class bank:
         fileRepo = fileRepository()
         fileRepo.saveAccountsForBank(self)
 
-    def delelteAccount(self, iban:str):
+    def deleteAccount(self, iban:str):
         # erhalte Account Objekt
         a = self.getAccountByIban(iban)
         # lösche Account aus Liste
-
-        # speichere auf die Festplatte
-        pass
+        if a != None:
+            self.__accounts.remove(a)
+            # speichere auf die Festplatte
+            fileRepo = fileRepository()
+            fileRepo.saveAccountsForBank(self)
+        else:
+            print(f"Der Account mit IBAN {iban} wurde nicht gefunden.")
+        
 
     
     def __str__(self):

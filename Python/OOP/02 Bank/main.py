@@ -1,6 +1,7 @@
 from account import account
 from bank import bank
 import random
+from time import *
 
 def displayAccounts(Bank:bank) -> None:
     for a in Bank.getAccounts():
@@ -52,15 +53,38 @@ while True:
     except:
         print("Die Bank wurde leider nicht gefunden.")
 
-print("Was möchten Sie tun:")
-print("(1) Accounts anzeigen")
-print("(2) Account hinzufügen")
-print("(3) Account löschen")
-print("(4) Überweisung tätigen")
-user_input = input(">")
+def deleteAccount(Bank:bank) -> None:
+    print("Welches Konto möchten Sie löschen?")
+    iban = input("IBAN: ")
 
-match user_input.strip():
-    case "1":
-        displayAccounts(Bank)
-    case "2":
-        createAccount(Bank)
+    Bank.deleteAccount(iban)
+
+    print("Account erfolgreich gelöscht!")
+
+def transfer(Bank):
+    
+
+while True:
+    print("Was möchten Sie tun:")
+    print("(1) Accounts anzeigen")
+    print("(2) Account hinzufügen")
+    print("(3) Account löschen")
+    print("(4) Überweisung tätigen")
+    print("(q) Beendet das Programm")
+    user_input = input(">")
+
+    match user_input.strip():
+        case "1":
+            displayAccounts(Bank)
+        case "2":
+            createAccount(Bank)
+        case "3":
+            deleteAccount(Bank)
+        case "4":
+            transfer(Bank)
+        case "q":
+            break
+        case _:
+            print("Ihre Eingabe war wähhhhh!")
+    
+    sleep(2)
