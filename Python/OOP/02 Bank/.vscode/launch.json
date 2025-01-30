@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python: Project",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            // "cwd": "D:\\Schulcloud\\_2024-25\\7AB\\24_7B_INF\\Python\\OOP\\02 Bank",  // Setze hier den Startpfad
+            "console": "integratedTerminal"
+        }
+    ]
+}

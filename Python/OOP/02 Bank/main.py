@@ -62,6 +62,13 @@ def deleteAccount(Bank:bank) -> None:
     print("Account erfolgreich gelöscht!")
 
 def transfer(Bank):
+    iban_from = input("Von welchem Konto möchten Sie überweisen?")
+
+    iban_to = input("An welches Konto möchten Sie überweisen?") 
+
+    amount = float(input("Wie viel möchten Sie überweisen?"))
+
+    Bank.transfer(iban_from,iban_to,amount)
     
 
 while True:
