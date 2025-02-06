@@ -13,3 +13,8 @@ class vehicle():
             self.speed = 0
         else:
             self.speed -= delta
+
+    def info(self) -> str:
+        return f"Das Fahrzeug der Marke {self.brand} fährt mit {self.speed} km/h"
+
+    
