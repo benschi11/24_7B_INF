@@ -16,6 +16,7 @@ class Circle(Shape):
         return centerPoint
     
     def draw(self, t:turtle.Turtle):
+        super().draw(t)
         t.penup() # verhindert das zeichnen
         t.goto((self.topleft.x + self.radius, self.topleft.y - 2*self.radius))
         t.pendown()

@@ -9,6 +9,7 @@ class Rectangle(Shape):
     height : int
 
     def draw(self, t:turtle.Turtle):
+        super().draw(t)
         t.penup() # verhindert das zeichnen
         t.goto(self.topleft.coords)
         t.degrees(360)
